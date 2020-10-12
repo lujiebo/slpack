@@ -1,0 +1,43 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<TableSelectDialog
+		noDataText="No Printers Found"
+		title="打印机选择弹窗"
+		search=".printerHandleSearch"
+		confirm=".printerHandleValueHelpClose"
+		cancel=".printerHandleValueHelpClose"
+		showClearButton="false"
+		items="{
+			path : 'PrinterModel>/',
+			sorter : {
+				path : 'Zdyjnumber',
+				descending : false
+			}
+		}">
+		<ColumnListItem >
+			<cells>
+				<Text text="{PrinterModel>Zdyjnumber}" />
+				<Text text="{PrinterModel>Zdyjname}" />
+				<Text text="{PrinterModel>Zcfdd}" />
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column width="12em">
+				<header>
+					<Text text="打印机编号" />
+				</header>
+			</Column>
+			<Column width="12em">
+				<header>
+					<Text text="打印机名称" />
+				</header>
+			</Column>
+			<Column width="12em">
+				<header>
+					<Text text="存放地点" />
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

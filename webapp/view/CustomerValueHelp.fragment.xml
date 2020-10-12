@@ -1,0 +1,49 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<TableSelectDialog
+		noDataText="No Customers Found"
+		title="客户编号选择弹窗"
+		search=".customerHandleSearch"
+		confirm=".customerHandleValueHelpClose"
+		cancel=".customerHandleValueHelpClose"
+		showClearButton="false"
+		items="{
+			path : 'CustomerModel>/',
+			sorter : {
+				path : 'Kunnr',
+				descending : false
+			}
+		}">
+		<ColumnListItem >
+			<cells>
+				<Text text="{CustomerModel>Kunnr}" />
+				<Text text="{CustomerModel>Name1}" />
+				<Text text="{CustomerModel>Land1}" />
+				<Text text="{CustomerModel>Ort01}" />
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column width="12em">
+				<header>
+					<Text text="客户编号" />
+				</header>
+			</Column>
+			<Column width="12em">
+				<header>
+					<Text text="客户名称" />
+				</header>
+			</Column>
+			<Column width="12em">
+				<header>
+					<Text text="国家" />
+				</header>
+			</Column>
+			<Column width="12em">
+				<header>
+					<Text text="城市" />
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

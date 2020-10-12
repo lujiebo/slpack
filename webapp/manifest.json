@@ -1,0 +1,142 @@
+{
+	"_version": "1.7.0",
+	"sap.app": {
+		"id": "com.shunyu.slpack",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.40.12"
+		},
+		"dataSources": {
+			"ZSY_COMM_SH_SRV": {
+				"uri": "/sap/opu/odata/sap/ZSY_COMM_SH_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			},
+			"ZSY_FIORI_LABELREDO_SRV": {
+				"uri": "/sap/opu/odata/sap/ZSY_FIORI_LABELREDO_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			},
+			"ZSY_MM_PRINT_INFO_SRV": {
+				"uri": "/sap/opu/odata/sap/ZSY_MM_PRINT_INFO_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		}
+	},
+
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize"
+
+		]
+	},
+
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "com.shunyu.slpack.view.App",
+			"type": "XML"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {},
+				"sap.ushell": {},
+				"sap.collaboration": {},
+				"sap.ui.comp": {},
+				"sap.uxap": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "com.shunyu.slpack.i18n.i18n"
+				}
+			},
+		
+			"sapDataSource": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"dataSource": "ZSY_COMM_SH_SRV",
+				"defaultBindingMode": "TwoWay"
+			},
+			
+			"sapSearchDataSource": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"dataSource": "ZSY_FIORI_LABELREDO_SRV",
+				"defaultBindingMode": "ThreeWay"
+			},
+			
+			"sapPrinterDataSource": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"dataSource": "ZSY_MM_PRINT_INFO_SRV",
+				"defaultBindingMode": "FourWay"
+			}
+		},
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "com.shunyu.slpack.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"async": true
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "Index",
+					"target": "Index"
+				}
+			],
+			"targets": {
+				"Index": {
+					"viewId": "Index",
+					"viewName": "Index"
+				}
+			}
+		}
+	}
+}

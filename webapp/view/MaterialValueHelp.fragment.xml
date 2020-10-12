@@ -1,0 +1,37 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<TableSelectDialog
+		noDataText="No Materials Found"
+		title="物料编号选择弹窗"
+		search=".materialHandleSearch"
+		confirm=".materialHandleValueHelpClose"
+		cancel=".materialHandleValueHelpClose"
+		showClearButton="false"
+		items="{
+			path : 'MaterialModel>/',
+			sorter : {
+				path : 'Matnr',
+				descending : false
+			}
+		}">
+		<ColumnListItem >
+			<cells>
+				<Text text="{MaterialModel>Matnr}" />
+				<Text text="{MaterialModel>Maktx}" />
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column width="12em">
+				<header>
+					<Text text="物料编号" />
+				</header>
+			</Column>
+			<Column width="12em">
+				<header>
+					<Text text="物料名称" />
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>
