@@ -22,16 +22,8 @@
 					"localUri": "localService/metadata.xml"
 				}
 			},
-			"ZSY_FIORI_LABELREDO_SRV": {
-				"uri": "/sap/opu/odata/sap/ZSY_FIORI_LABELREDO_SRV/",
-				"type": "OData",
-				"settings": {
-					"odataVersion": "2.0",
-					"localUri": "localService/metadata.xml"
-				}
-			},
-			"ZSY_MM_PRINT_INFO_SRV": {
-				"uri": "/sap/opu/odata/sap/ZSY_MM_PRINT_INFO_SRV/",
+			"ZSY_MM_BULKPACK_SRV": {
+				"uri": "/sap/opu/odata/sap/ZSY_MM_BULKPACK_SRV/",
 				"type": "OData",
 				"settings": {
 					"odataVersion": "2.0",
@@ -91,23 +83,15 @@
 					"bundleName": "com.shunyu.slpack.i18n.i18n"
 				}
 			},
-		
 			"ZSY_COMM_SH_SRV": {
 				"type": "sap.ui.model.odata.v2.ODataModel",
 				"dataSource": "ZSY_COMM_SH_SRV",
 				"defaultBindingMode": "TwoWay"
 			},
-			
-			"sapSearchDataSource": {
+			"ZSY_MM_BULKPACK_SRV": {
 				"type": "sap.ui.model.odata.v2.ODataModel",
-				"dataSource": "ZSY_FIORI_LABELREDO_SRV",
+				"dataSource": "ZSY_MM_BULKPACK_SRV",
 				"defaultBindingMode": "ThreeWay"
-			},
-			
-			"sapPrinterDataSource": {
-				"type": "sap.ui.model.odata.v2.ODataModel",
-				"dataSource": "ZSY_MM_PRINT_INFO_SRV",
-				"defaultBindingMode": "FourWay"
 			}
 		},
 		"resources": {
