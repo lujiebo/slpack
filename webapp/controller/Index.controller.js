@@ -37,67 +37,83 @@ sap.ui.define([
 
 		// 初始化
 		onInit: function() {
-			// var rootPath = jQuery.sap.getModulePath("com.shunyu.slpack");
+			var oModel = this.getModel("ZSY_COMM_SH_SRV");
+			oModel.read("/ZSY_SH_T001WSet", {
+			  success: function (oData, oResponse) {
+				var oFactoryListModel = new JSONModel(oData);
+				this.setModel(oFactoryListModel, "oFactoryList");
+			  }.bind(this),
+			  error: function () {
+				sap.m.MessageToast.show("读取工厂数据失败,请重新加载");
+			  }
+			});
 
-			// 需要初始化下拉框的值
-			var searchdatamodel = this.getModel("sapDataSource");
-			var item;
-			var me = this;
-
-			// HU号
-			searchdatamodel.read("/ZSY_SH_VEKPSet", {
-				success: function(oData, oResponse) {
-					item = oData.results;
-					var oModel = new JSONModel(item);
-					me.getView().setModel(oModel, "HUModel");
+			oModel.read("/ZSY_SH_T001WSet", {
+				success: function (oData, oResponse) {
+				  var oFactoryListModel = new JSONModel(oData);
+				  this.setModel(oFactoryListModel, "oFactoryList");
+				}.bind(this),
+				error: function () {
+				  sap.m.MessageToast.show("读取工厂数据失败,请重新加载");
 				}
-			});
+			  });
 
-			// 物料编号
-			searchdatamodel.read("/ZSY_SH_MAKTSet", {
-				success: function(oData, oResponse) {
-					item = oData.results;
-					var oModel = new JSONModel(item);
-					me.getView().setModel(oModel, "MaterialModel");
-				}
-			});
 
-			// 客户编号
-			searchdatamodel.read("/ZSY_SH_KNA1Set", {
-				success: function(oData, oResponse) {
-					item = oData.results;
-					var oModel = new JSONModel(item);
-					me.getView().setModel(oModel, "CustomerModel");
-				}
-			});
 
-			var oSearchModel = new JSONModel({
-				HUCode: null,
-				materialCode: null,
-				customerMaterialCode: null,
-				batch: null,
-				customerCode: null,
-				dateStart: null,
-				dateEnd: null
-			});
-			// 不知道干什么用的
-			// oSearchModel.setDefaultBindingMode(sap.ui.model.BindingMode.ThreeWay);
-			me.setModel(oSearchModel, "searchModel");
+			// // HU号
+			// searchdatamodel.read("/ZSY_SH_VEKPSet", {
+			// 	success: function(oData, oResponse) {
+			// 		item = oData.results;
+			// 		var oModel = new JSONModel(item);
+			// 		me.getView().setModel(oModel, "HUModel");
+			// 	}
+			// });
 
-			var filterModel = new JSONModel();
-			// filterModel.setDefaultBindingMode(sap.ui.model.BindingMode.TwoWay);
-			me.setModel(filterModel, "filterModel");
+			// // 物料编号
+			// searchdatamodel.read("/ZSY_SH_MAKTSet", {
+			// 	success: function(oData, oResponse) {
+			// 		item = oData.results;
+			// 		var oModel = new JSONModel(item);
+			// 		me.getView().setModel(oModel, "MaterialModel");
+			// 	}
+			// });
 
-			var obqselectModel = new JSONModel({
-				isselect: false,
-				startselect: false
-			});
+			// // 客户编号
+			// searchdatamodel.read("/ZSY_SH_KNA1Set", {
+			// 	success: function(oData, oResponse) {
+			// 		item = oData.results;
+			// 		var oModel = new JSONModel(item);
+			// 		me.getView().setModel(oModel, "CustomerModel");
+			// 	}
+			// });
 
-			me.setModel(obqselectModel, "obqselectModel");
+			// var oSearchModel = new JSONModel({
+			// 	HUCode: null,
+			// 	materialCode: null,
+			// 	customerMaterialCode: null,
+			// 	batch: null,
+			// 	customerCode: null,
+			// 	dateStart: null,
+			// 	dateEnd: null
+			// });
+			// // 不知道干什么用的
+			// // oSearchModel.setDefaultBindingMode(sap.ui.model.BindingMode.ThreeWay);
+			// me.setModel(oSearchModel, "searchModel");
 
-			this.macAddress = "";
-			// 获取mac地址
-			this._onGetMac();
+			// var filterModel = new JSONModel();
+			// // filterModel.setDefaultBindingMode(sap.ui.model.BindingMode.TwoWay);
+			// me.setModel(filterModel, "filterModel");
+
+			// var obqselectModel = new JSONModel({
+			// 	isselect: false,
+			// 	startselect: false
+			// });
+
+			// me.setModel(obqselectModel, "obqselectModel");
+
+			// this.macAddress = "";
+			// // 获取mac地址
+			// this._onGetMac();
 
 		},
 

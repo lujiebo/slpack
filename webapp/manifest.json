@@ -92,7 +92,7 @@
 				}
 			},
 		
-			"sapDataSource": {
+			"ZSY_COMM_SH_SRV": {
 				"type": "sap.ui.model.odata.v2.ODataModel",
 				"dataSource": "ZSY_COMM_SH_SRV",
 				"defaultBindingMode": "TwoWay"

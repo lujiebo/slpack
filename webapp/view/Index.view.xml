@@ -19,48 +19,36 @@
 						<fb:FilterBar search="onSearch" useToolbar="false" showRestoreButton="false" showClearButton="true"
 							showGoOnFB="true" showFilterConfiguration="false" id="tagfilter" >
 							<fb:filterItems>
-								<!--HU号-->
+								<!--工厂-->
 								<fb:FilterItem name="werks" label="{i18n>IndexView.werks}">
 									<fb:control>
-										<Input
-										id="s_werks"
-										type="Text"
-										value="{searchModel>/werks}"
-										showValueHelp="true"
-										valueHelpOnly="false"
-										valueHelpRequest="HUHandleValueHelp"
-										width="15rem"
-										class="sapUiSmallMarginBottom"/>
+										<ComboBox id="s_werks" showSecondaryValues="true" 
+											selectedKey="{searchModel>/werks}"
+											items="{ path: 'oFactoryList>/results', templateShareable:false }">
+											<core:ListItem key="{oFactoryList>Werks}" text="{oFactoryList>Werks}" additionalText="{oFactoryList>Name1}"/>
+										</ComboBox>
 									</fb:control>
 								</fb:FilterItem>
 
 								<!--仓库-->
 								<fb:FilterItem name="stock"  label="{i18n>IndexView.stock}">
 									<fb:control>
-										<Input
-										id="s_stock"
-										type="Text"
-										value="{searchModel>/stock}"
-										showValueHelp="true"
-										valueHelpOnly="false"
-										valueHelpRequest="handleValueHelp1"
-										width="15rem"
-										class="sapUiSmallMarginBottom"/>
+										<ComboBox id="s_stock" showSecondaryValues="true" 
+											selectedKey="{searchModel>/stock}"
+											items="{ path: 'oFactoryList>/results', templateShareable:false }">
+											<core:ListItem key="{oFactoryList>Werks}" text="{oFactoryList>Werks}" additionalText="{oFactoryList>Name1}"/>
+										</ComboBox>
 									</fb:control>
 								</fb:FilterItem>
 
 								<!--目标仓库-->
 								<fb:FilterItem name="targetStock"  label="{i18n>IndexView.targetStock}">
 									<fb:control>
-										<Input
-										id="s_targetStock"
-										type="Text"
-										value="{searchModel>/targetStock}"
-										showValueHelp="true"
-										valueHelpOnly="false"
-										valueHelpRequest="handleValueHelp1"
-										width="15rem"
-										class="sapUiSmallMarginBottom"/>
+										<ComboBox id="s_targetStock" showSecondaryValues="true" 
+											selectedKey="{searchModel>/targetStock}"
+											items="{ path: 'oFactoryList>/results', templateShareable:false }">
+											<core:ListItem key="{oFactoryList>Werks}" text="{oFactoryList>Werks}" additionalText="{oFactoryList>Name1}"/>
+										</ComboBox>
 									</fb:control>
 								</fb:FilterItem>
 								
@@ -82,11 +70,11 @@
 								<!--批次-->
 								<fb:FilterItem name="batch" label="{i18n>IndexView.batch}">
 									<fb:control>
-										<Input id="batch" value="{searchModel>/batch}" width="20rem">
-										<layoutData>
-												<l:GridData span="XL4 L4 M4 S4"/>
-											</layoutData>
-										</Input>
+										<ComboBox id="s_mchb" showSecondaryValues="true" 
+											selectedKey="{searchModel>/mchb}"
+											items="{ path: 'oFactoryList>/results', templateShareable:false }">
+											<core:ListItem key="{oFactoryList>Werks}" text="{oFactoryList>Werks}" additionalText="{oFactoryList>Name1}"/>
+										</ComboBox>
 									</fb:control>
 								</fb:FilterItem>
 							</fb:filterItems>
