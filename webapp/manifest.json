@@ -29,6 +29,22 @@
 					"odataVersion": "2.0",
 					"localUri": "localService/metadata.xml"
 				}
+			},
+			"ZSY_MM_PRINT_INFO_SRV": {
+				"uri": "/sap/opu/odata/sap/ZSY_MM_PRINT_INFO_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			},
+			"ZSY_FIORI_LABELREDO_SRV": {
+				"uri": "/sap/opu/odata/sap/ZSY_FIORI_LABELREDO_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
 			}
 		}
 	},
@@ -92,6 +108,16 @@
 				"type": "sap.ui.model.odata.v2.ODataModel",
 				"dataSource": "ZSY_MM_BULKPACK_SRV",
 				"defaultBindingMode": "ThreeWay"
+			},			
+			"ZSY_MM_PRINT_INFO_SRV": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"dataSource": "ZSY_MM_PRINT_INFO_SRV",
+				"defaultBindingMode": "TwoWay"
+			},
+			"ZSY_FIORI_LABELREDO_SRV": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"dataSource": "ZSY_FIORI_LABELREDO_SRV",
+				"defaultBindingMode": "TwoWay"
 			}
 		},
 		"resources": {
@@ -113,12 +139,23 @@
 					"pattern": "",
 					"name": "Index",
 					"target": "Index"
+				},
+				{
+					"pattern": "Slpack/{params}",
+					"name": "Slpack",
+					"target": ["Slpack"]
 				}
 			],
 			"targets": {
 				"Index": {
 					"viewId": "Index",
 					"viewName": "Index"
+				},
+				"Slpack": {
+					"viewType": "XML",
+					"viewLevel": 1,
+					"viewId": "Slpack",
+					"viewName": "Slpack"
 				}
 			}
 		}
