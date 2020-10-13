@@ -8,6 +8,7 @@ sap.ui.define([
   "sap/ui/model/FilterOperator",
   "sap/ui/core/Fragment",
   "sap/m/Dialog",
+  "com/shunyu/slpack/LodopFuncs"
 ], function (
   BaseController,
   JSONModel,
@@ -22,11 +23,12 @@ sap.ui.define([
 
   return BaseController.extend("com.shunyu.slpack.controller.Slpack", {
     onInit: function () {
-      this.getRouter().getRoute("Slpack").attachPatternMatched(this._onRouteMatched, this);
+	  this.getRouter().getRoute("Slpack").attachPatternMatched(this._onRouteMatched, this);
+
     },
 
-    _onRouteMatched: function (oEvent) {
-	 this._onGetMac(); //获取mac地址
+    _onRouteMatched: function (oEvent) {	
+		this._onGetMac(); //获取mac地址
       // ...初始化厂区
       var checkokstatus = new JSONModel();
       var checkokstatusdata = {

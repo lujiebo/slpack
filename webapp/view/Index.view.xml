@@ -1,6 +1,6 @@
 <mvc:View xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" 
 	xmlns:f="sap.f" xmlns:u="sap.ui.table"
-	xmlns:fb="sap.ui.comp.filterbar" xmlns:l="sap.ui.layout" controllerName="com.shunyu.slpack.controller.Index" height="100%">
+	xmlns:fb="sap.ui.comp.filterbar" controllerName="com.shunyu.slpack.controller.Index" height="100%">
 		<f:DynamicPage headerExpanded="true">
 		
 			<!--第一个主体 标题 查询条件-->
@@ -14,15 +14,16 @@
 			
 			<!--各查询条件输入选择框-->
 			<f:header>
-				<f:DynamicPageHeader >
+				<f:DynamicPageHeader>
 					<f:content>
 						<fb:FilterBar search="onSearch" useToolbar="false" showRestoreButton="false" showClearButton="true"
-							showGoOnFB="true" showFilterConfiguration="false" id="tagfilter" >
+							showGoOnFB="true" showFilterConfiguration="false" id="tagfilter">
 							<fb:filterItems>
 								<!--工厂-->
 								<fb:FilterItem name="werks" label="{i18n>IndexView.werks}">
 									<fb:control>
 										<ComboBox id="s_werks" showSecondaryValues="true" 
+											change="onChangeWerks"
 											selectedKey="{searchModel>/werks}"
 											items="{ path: 'oFactoryList>/results', templateShareable:false }">
 											<core:ListItem key="{oFactoryList>Werks}" text="{oFactoryList>Werks}" additionalText="{oFactoryList>Name1}"/>
@@ -33,10 +34,11 @@
 								<!--仓库-->
 								<fb:FilterItem name="stock"  label="{i18n>IndexView.stock}">
 									<fb:control>
-										<ComboBox id="s_stock" showSecondaryValues="true" 
+										<ComboBox id="s_stock" showSecondaryValues="true"
+											change="onChangeFack"
 											selectedKey="{searchModel>/stock}"
-											items="{ path: 'oFactoryList>/results', templateShareable:false }">
-											<core:ListItem key="{oFactoryList>Werks}" text="{oFactoryList>Werks}" additionalText="{oFactoryList>Name1}"/>
+											items="{ path: 'ofacklist>/results', templateShareable:false }">
+											<core:ListItem key="{ofacklist>Lgort}" text="{ofacklist>Lgort}--{ofacklist>Lgobe}--{ofacklist>Werks}"/>
 										</ComboBox>
 									</fb:control>
 								</fb:FilterItem>
@@ -44,11 +46,13 @@
 								<!--目标仓库-->
 								<fb:FilterItem name="targetStock"  label="{i18n>IndexView.targetStock}">
 									<fb:control>
-										<ComboBox id="s_targetStock" showSecondaryValues="true" 
-											selectedKey="{searchModel>/targetStock}"
-											items="{ path: 'oFactoryList>/results', templateShareable:false }">
-											<core:ListItem key="{oFactoryList>Werks}" text="{oFactoryList>Werks}" additionalText="{oFactoryList>Name1}"/>
-										</ComboBox>
+									<Input
+										id="s_targetStock"
+										type="Text"
+										value="{targetck>/Lgort}"
+										width="15rem"
+										editable="false"
+										class="sapUiSmallMarginBottom"/>
 									</fb:control>
 								</fb:FilterItem>
 								
@@ -72,8 +76,8 @@
 									<fb:control>
 										<ComboBox id="s_mchb" showSecondaryValues="true" 
 											selectedKey="{searchModel>/mchb}"
-											items="{ path: 'oFactoryList>/results', templateShareable:false }">
-											<core:ListItem key="{oFactoryList>Werks}" text="{oFactoryList>Werks}" additionalText="{oFactoryList>Name1}"/>
+											items="{ path: 'oMchblModel>/', templateShareable:false }">
+											<core:ListItem key="{oMchblModel>Charg}" text="{oMchblModel>Charg}" />
 										</ComboBox>
 									</fb:control>
 								</fb:FilterItem>
@@ -84,8 +88,9 @@
 			</f:header>
 			
 			<f:content>
-				<u:Table id="table" selectionMode="MultiToggle" visibleRowCount="10" rowActionCount="1" 
-                        rows="{path: 'ship>/ZSY_QM22_I1Set'}" ariaLabelledBy="title" class="custTable">
+				<u:Table id="table" selectionMode="Single" visibleRowCount="15" rowActionCount="1" 
+                        rows="{path: 'oKcmxList>/kcmxlist'}" ariaLabelledBy="title" class="custTable"
+						>
                     <u:extension>
                         <OverflowToolbar>
                             <content>
@@ -95,8 +100,8 @@
                                     visible="{/otherEditable}"
                                     tooltip="{i18n>IndexView.btnEdit}"
 									type="Emphasized"
-                                    press="onAddItem" 
-									text="{i18n>IndexView.btnEdit}"/>
+									text="{i18n>IndexView.btnEdit}"
+									press="onEditBq"/>
                             </content>
                         </OverflowToolbar>
                     </u:extension>
@@ -104,45 +109,32 @@
                         <u:Column>
                             <Label text="物料编号" />
                             <u:template>
-                                <Input  
-                                    editable="{/otherEditable}"
-                                    type="Text"
-                                    value="{ship>Zmxbh}"		
-                                    showValueHelp="true"
-                                    valueHelpOnly="true"
-                                    valueHelpRequest="handleValueHelp3">
-                                    <layoutData>
-                                        <l:GridData span="XL2 L2 M4 S8" />
-                                    </layoutData>
-                                </Input>
+                                <Text text="{oKcmxList>Matnr}">
+								</Text>  
                             </u:template>
                         </u:Column>
                         <u:Column>
                             <Label text="物料名称" />
                             <u:template>
-                                <Input value="{ship>Zmxmc}" editable="{/otherEditable}"/>
+								<Text text="{oKcmxList>Maktx}">
+								</Text>  
                             </u:template>
                         </u:Column>
                         <u:Column>
                             <Label text="数量" />
                             <u:template>
-                                <TextArea value="{ship>Zjcbzms}" editable="{/otherEditable}" width="100%"/>
+								<Text text="{oKcmxList>Clabs}">
+								</Text>  
                             </u:template>
                         </u:Column>
                         <u:Column>
                             <Label text="批次"/>
                             <u:template>
-                                <Input value="{ship>Zxsbz}" editable="{/otherEditable}"/>
+								<Text text="{oKcmxList>Charg}">
+								</Text>  
                             </u:template>
                         </u:Column>       
                     </u:columns>
-                    <u:rowActionTemplate>
-                        <u:RowAction visible="{/otherEditable}">
-                            <u:items>
-                                <u:RowActionItem icon="sap-icon://decline" text="{ship>Zzxxh}" type="Delete" press="onDeleteItem2"></u:RowActionItem>
-                            </u:items>
-                        </u:RowAction>
-                    </u:rowActionTemplate>
                 </u:Table>
 			</f:content>
 		</f:DynamicPage>

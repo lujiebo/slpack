@@ -15,7 +15,7 @@
 		},
 		"dataSources": {
 			"ZSY_COMM_SH_SRV": {
-				"uri": "/SD4/sap/opu/odata/sap/ZSY_COMM_SH_SRV/",
+				"uri": "/sap/opu/odata/sap/ZSY_COMM_SH_SRV/",
 				"type": "OData",
 				"settings": {
 					"odataVersion": "2.0",
@@ -23,7 +23,7 @@
 				}
 			},
 			"ZSY_MM_BULKPACK_SRV": {
-				"uri": "/SD4/sap/opu/odata/sap/ZSY_MM_BULKPACK_SRV/",
+				"uri": "/sap/opu/odata/sap/ZSY_MM_BULKPACK_SRV/",
 				"type": "OData",
 				"settings": {
 					"odataVersion": "2.0",
@@ -31,7 +31,7 @@
 				}
 			},
 			"ZSY_MM_PRINT_INFO_SRV": {
-				"uri": "/SD4/sap/opu/odata/sap/ZSY_MM_PRINT_INFO_SRV/",
+				"uri": "/sap/opu/odata/sap/ZSY_MM_PRINT_INFO_SRV/",
 				"type": "OData",
 				"settings": {
 					"odataVersion": "2.0",
@@ -39,7 +39,7 @@
 				}
 			},
 			"ZSY_FIORI_LABELREDO_SRV": {
-				"uri": "/SD4/sap/opu/odata/sap/ZSY_FIORI_LABELREDO_SRV/",
+				"uri": "/sap/opu/odata/sap/ZSY_FIORI_LABELREDO_SRV/",
 				"type": "OData",
 				"settings": {
 					"odataVersion": "2.0",
@@ -47,7 +47,7 @@
 				}
 			},
 			"ZSY_MM106_BULK_PACKING_SRV": {
-				"uri": "/SD4/sap/opu/odata/sap/ZSY_MM106_BULK_PACKING_SRV/",
+				"uri": "/sap/opu/odata/sap/ZSY_MM106_BULK_PACKING_SRV/",
 				"type": "OData",
 				"settings": {
 					"odataVersion": "2.0",
@@ -131,34 +131,41 @@
 			}
 		},
 		"resources": {
-			"css": [
-				{
-					"uri": "css/style.css"
-				}
-			]
+			"css": [{
+				"uri": "css/style.css"
+			}]
 		},
-		"routes": [
-			{
-				"pattern": "",
-				"name": "Index",
-				"target": "Index"
-			},
-			{
-				"pattern": "Slpack/{params}",
-				"name": "Slpack",
-				"target": ["Slpack"]
-			}
-		],
-		"targets": {
-			"Index": {
-				"viewId": "Index",
-				"viewName": "Index"
-			},
-			"Slpack": {
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
-				"viewLevel": 1,
-				"viewId": "Slpack",
-				"viewName": "Slpack"
+				"viewPath": "com.shunyu.slpack.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"async": true
+			},
+			"routes": [{
+					"pattern": "",
+					"name": "Index",
+					"target": "Index"
+				},
+				{
+					"pattern": "Slpack/{params}",
+					"name": "Slpack",
+					"target": ["Slpack"]
+				}
+			],
+			"targets": {
+				"Index": {
+					"viewId": "Index",
+					"viewName": "Index"
+				},
+				"Slpack": {
+					"viewType": "XML",
+					"viewLevel": 1,
+					"viewId": "Slpack",
+					"viewName": "Slpack"
+				}
 			}
 		}
 	}
