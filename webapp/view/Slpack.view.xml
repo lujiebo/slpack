@@ -8,7 +8,7 @@
     xmlns:fb="sap.ui.comp.filterbar"
     xmlns:l="sap.ui.layout" controllerName="com.shunyu.slpack.controller.Slpack"
 	height="100%">
-   <Page   enableScrolling="true" showNavButton="true" navButtonPress="onNavBack">
+	 <Page   enableScrolling="true" showNavButton="true" navButtonPress="onNavBack">
     <f:DynamicPage headerExpanded="true">
         <!--第一个主体 标题 查询条件-->
         <f:title>
@@ -35,7 +35,7 @@
                             <Label text="{i18n>SlpackView.materialName}" class="labelFontSize"/>
                             <Input editable="false" value="{oMaterialModel>materialName}"/>
                             <Label text="{i18n>SlpackView.printBatch}" class="labelFontSize"/>
-                            <Input editable="true" value="{oMaterialModel>printBatch}"/>
+                            <Input editable="true" value="{oMaterialModel>printBatch}" change=".onPrintBatchChange"/>
                             <Label text="{i18n>SlpackView.packQuantity}" class="labelFontSize"/>
                             <Input editable="true" change=".onPackQuanChange"  value="{oMaterialModel>packQuantity}"/>
                             <Label text="{i18n>SlpackView.quantity}" class="labelFontSize"/>

@@ -6,6 +6,21 @@
 /*	border-left: 1px solid lightgray;*/
 /*}*/
 
+.formheader .sapUiFormTitle.sapUiFormTitleH4 {
+  height: 0rem;
+  padding-bottom: 0rem;
+}
+
+.myForm.sapUiForm:not(.sapUiFormEdit) .sapUiFormCLSmallColumns .sapUiFormCLElement{
+    padding:0rem
+}
+
+.formContent.sapUiRespGrid.sapUiRespGridMedia-Std-Phone.sapUiRespGridHSpace0.sapUiRespGridVSpace0.sapUiFormResGridMain.sapUiRespGridOverflowHidden {
+  padding: 0rem;
+  padding-top: 0rem;
+
+}
+
 .sapMLIBShowSeparator>td {
     border-top: 1px solid #e5e5e5;
     border-left:  1px solid lightgray;
